@@ -1,7 +1,7 @@
 name: g2x_popup_menu_multiselect
 description: A new Flutter package project.
 version: 0.0.1
-publish_to: none
+publish_to: 'none'
 homepage:
 
 environment:
