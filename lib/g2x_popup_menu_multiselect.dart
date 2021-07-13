@@ -135,7 +135,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
   @override
   Widget build(BuildContext context) {
     var right = widget.parentOffset.dx + widget.parentSize.width/2;
-    var left = widget.parentOffset.dx - (widthLargerText + 8) - widget.parentSize.width/2;
+    var left = widget.parentOffset.dx - (widthLargerText + 5) - widget.parentSize.width/2;
     return GestureDetector(
       onTap: (){
         Navigator.pop(context);
@@ -144,20 +144,21 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
         color: Colors.transparent,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
         child: Stack(
           children: [
             Positioned(
               left: left < 10 ? right : left,
-              top: widget.parentOffset.dy + widget.parentSize.height/2,
+              top: widget.parentOffset.dy + widget.parentSize.height/2.2,
               child: Material(
                 color: Colors.transparent,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(2),
                     boxShadow: [
                       BoxShadow(
-                        blurRadius: 5,
+                        blurRadius: 2,
                         offset: Offset(0, 3),
                         spreadRadius: 2,
                         color: Colors.black12
@@ -172,7 +173,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                           update(index);
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -180,7 +181,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                               SizedBox(
                                 width: widthLargerText,
                                 child: Text(newList[index].text)),
-                              SizedBox(width: 20),
+                              SizedBox(width: 50),
                               SizedBox(
                                 height: 30,
                                 width: 30,
