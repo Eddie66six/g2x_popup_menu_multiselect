@@ -172,38 +172,41 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                   ),
                   child: SizedBox(
                     height: widget.maxHeight,
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: List.generate(newList.length, (index)
-                        => InkWell(
-                          onTap: (){
-                            update(index);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: widthLargerText,
-                                  child: Text(newList[index].text)),
-                                SizedBox(width: 50),
-                                SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Checkbox(
-                                    value: newList[index].selected,
-                                    onChanged: (_){
-                                      update(index);
-                                    },
-                                  ),
-                                )
-                              ]
+                    width: MediaQuery.of(context).size.width,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(newList.length, (index)
+                          => InkWell(
+                            onTap: (){
+                              update(index);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: widthLargerText,
+                                    child: Text(newList[index].text)),
+                                  SizedBox(width: 50),
+                                  SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: Checkbox(
+                                      value: newList[index].selected,
+                                      onChanged: (_){
+                                        update(index);
+                                      },
+                                    ),
+                                  )
+                                ]
+                              ),
                             ),
-                          ),
+                          )
                         )
-                      )
+                      ),
                     ),
                   ),
                 ),
