@@ -142,8 +142,13 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
     if(widthLargerText > MediaQuery.of(context).size.width * 0.3){
       widthLargerText = MediaQuery.of(context).size.width * 0.3;
     }
-    var right = widget.parentOffset.dx + widget.parentSize.width/2;
-    var left = widget.parentOffset.dx - (widthLargerText + 5) - widget.parentSize.width/2;
+
+    var left = widget.parentOffset.dx + widget.parentSize.width/2;
+    if(widget.parentOffset.dx + widget.parentSize.width >
+      MediaQuery.of(context).size.width/2){
+        left = widget.parentOffset.dx - widthLargerText - widget.parentSize.width/2;
+      }
+
     return GestureDetector(
       onTap: (){
         Navigator.pop(context);
@@ -155,7 +160,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
         child: Stack(
           children: [
             Positioned(
-              left: left < 10 ? right : left,
+              left: left,
               top: widget.parentOffset.dy + widget.parentSize.height/2.2,
               child: Material(
                 color: Colors.transparent,
