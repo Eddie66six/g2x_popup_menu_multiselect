@@ -139,6 +139,9 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
 
   @override
   Widget build(BuildContext context) {
+    if(widthLargerText > MediaQuery.of(context).size.width * 0.3){
+      widthLargerText = MediaQuery.of(context).size.width * 0.3;
+    }
     var right = widget.parentOffset.dx + widget.parentSize.width/2;
     var left = widget.parentOffset.dx - (widthLargerText + 5) - widget.parentSize.width/2;
     return GestureDetector(
@@ -187,9 +190,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: widthLargerText > MediaQuery.of(context).size.width * 0.3 ?
-                                     MediaQuery.of(context).size.width * 0.3 :
-                                     widthLargerText,
+                                    width: widthLargerText,
                                     child: Text(newList[index].text)),
                                   SizedBox(width: 40),
                                   SizedBox(
