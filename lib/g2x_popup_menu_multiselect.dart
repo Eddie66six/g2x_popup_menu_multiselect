@@ -149,7 +149,6 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
         color: Colors.transparent,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
         child: Stack(
           children: [
             Positioned(
@@ -172,7 +171,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                   ),
                   child: SizedBox(
                     height: widget.maxHeight,
-                    width: MediaQuery.of(context).size.width,
+                    //width: MediaQuery.of(context).size.width,
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -187,10 +186,12 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SizedBox(
-                                    width: widthLargerText,
+                                  Container(
+                                    width: widthLargerText > MediaQuery.of(context).size.width * 0.3 ?
+                                     MediaQuery.of(context).size.width * 0.3 :
+                                     widthLargerText,
                                     child: Text(newList[index].text)),
-                                  SizedBox(width: 50),
+                                  SizedBox(width: 40),
                                   SizedBox(
                                     height: 30,
                                     width: 30,

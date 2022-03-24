@@ -28,21 +28,27 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        body: Center(
-         child: Container(
-           color: Colors.red,
-           child: G2xPopupMenuMultiSelect(
-             onSelected: (_){},
-             children: List.generate(100, (index) => G2xPopupMenuMultiSelectModel(
-               index.toString(),
-               "sdfgsdfgsdfgsdfgsdfgsdf   " + index.toString()
-             )),
-             child: Row(
-               children: [
-                 Text("sdfgsdfg"),
-                 Icon(Icons.arrow_drop_down)
-               ],
+         child: Row(
+           children: [
+             SizedBox(width: 300,),
+             Container(
+               color: Colors.red,
+               child: G2xPopupMenuMultiSelect(
+                 onSelected: (_){},
+                 children: List.generate(100, (index) => G2xPopupMenuMultiSelectModel(
+                   index.toString(),
+                   "sdfgsdfgsdfgsdfgsdfgsdf   " + index.toString()
+                 )),
+                 child: Row(
+                   mainAxisSize: MainAxisSize.min,
+                   children: [
+                     Text("sdfgsdfg"),
+                     Icon(Icons.arrow_drop_down)
+                   ],
+                 ),
+               ),
              ),
-           ),
+           ],
          ),
        ),
     );
