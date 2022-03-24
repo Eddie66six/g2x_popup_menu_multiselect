@@ -26,12 +26,14 @@ class G2xPopupMenuMultiSelect extends StatefulWidget {
   final Function(List<G2xPopupMenuMultiSelectModel>) onSelected;
   final Widget child;
   final String? selectAll;
+  final double? maxHeight;
   const G2xPopupMenuMultiSelect({
     Key? key,
     required this.children,
     required this.onSelected,
     required this.child,
-    this.selectAll
+    this.selectAll,
+    this.maxHeight
   }) : super(key: key);
 
   @override
@@ -59,7 +61,8 @@ class _G2xPopupMenuMultiSelectState extends State<G2xPopupMenuMultiSelect> {
               parentOffset: offset,
               parentSize: size,
               onSelected: widget.onSelected,
-              selectAll: widget.selectAll
+              selectAll: widget.selectAll,
+              maxHeight: widget.maxHeight,
             ),
           ),
         );
@@ -75,13 +78,15 @@ class _G2xPopupMenuMultiSelectContainer extends StatefulWidget {
   final Offset parentOffset;
   final Size parentSize;
   final String? selectAll;
+  final double? maxHeight;
   const _G2xPopupMenuMultiSelectContainer({
     Key? key,
     required this.children,
     required this.onSelected,
     required this.parentOffset,
     required this.parentSize,
-    this.selectAll
+    this.selectAll,
+    this.maxHeight
   }) : super(key: key);
 
   @override
@@ -165,38 +170,41 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                       )
                     ]
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: List.generate(newList.length, (index)
-                      => InkWell(
-                        onTap: (){
-                          update(index);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: widthLargerText,
-                                child: Text(newList[index].text)),
-                              SizedBox(width: 50),
-                              SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: Checkbox(
-                                  value: newList[index].selected,
-                                  onChanged: (_){
-                                    update(index);
-                                  },
-                                ),
-                              )
-                            ]
+                  child: SizedBox(
+                    height: widget.maxHeight,
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      children: List.generate(newList.length, (index)
+                        => InkWell(
+                          onTap: (){
+                            update(index);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: widthLargerText,
+                                  child: Text(newList[index].text)),
+                                SizedBox(width: 50),
+                                SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Checkbox(
+                                    value: newList[index].selected,
+                                    onChanged: (_){
+                                      update(index);
+                                    },
+                                  ),
+                                )
+                              ]
+                            ),
                           ),
-                        ),
+                        )
                       )
-                    )
+                    ),
                   ),
                 ),
               ),
