@@ -144,9 +144,11 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
     }
 
     var left = widget.parentOffset.dx + widget.parentSize.width/2;
+    print(widget.parentOffset.dx + widget.parentSize.width);
+    print(MediaQuery.of(context).size.width/2);
     if(widget.parentOffset.dx + widget.parentSize.width >
       MediaQuery.of(context).size.width/2){
-        left = widget.parentOffset.dx - widthLargerText - widget.parentSize.width/2;
+        left = widget.parentOffset.dx + widget.parentSize.width - widthLargerText - 90;
       }
 
     return GestureDetector(
