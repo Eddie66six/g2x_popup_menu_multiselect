@@ -151,6 +151,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
         left = widget.parentOffset.dx + widget.parentSize.width - widthLargerText - 90;
       }
 
+    final scrollController = ScrollController(); 
     return GestureDetector(
       onTap: (){
         Navigator.pop(context);
@@ -182,39 +183,44 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                   child: SizedBox(
                     height: widget.maxHeight,
                     //width: MediaQuery.of(context).size.width,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(newList.length, (index)
-                          => InkWell(
-                            onTap: (){
-                              update(index);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    width: widthLargerText,
-                                    child: Text(newList[index].text)),
-                                  SizedBox(width: 40),
-                                  SizedBox(
-                                    height: 30,
-                                    width: 30,
-                                    child: Checkbox(
-                                      value: newList[index].selected,
-                                      onChanged: (_){
-                                        update(index);
-                                      },
-                                    ),
-                                  )
-                                ]
+                    child: Scrollbar(
+                      isAlwaysShown: widget.maxHeight != null,
+                      controller: scrollController,
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(newList.length, (index)
+                            => InkWell(
+                              onTap: (){
+                                update(index);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 10),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: widthLargerText,
+                                      child: Text(newList[index].text)),
+                                    SizedBox(width: 40),
+                                    SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: Checkbox(
+                                        value: newList[index].selected,
+                                        onChanged: (_){
+                                          update(index);
+                                        },
+                                      ),
+                                    )
+                                  ]
+                                ),
                               ),
-                            ),
+                            )
                           )
-                        )
+                        ),
                       ),
                     ),
                   ),

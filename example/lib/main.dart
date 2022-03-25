@@ -35,6 +35,7 @@ class MyHomePage extends StatelessWidget {
                width: MediaQuery.of(context).size.width * 0.6,
                color: Colors.red,
                child: G2xPopupMenuMultiSelect(
+                 maxHeight: 200,
                  onSelected: (_){},
                  children: List.generate(100, (index) => G2xPopupMenuMultiSelectModel(
                    index.toString(),
