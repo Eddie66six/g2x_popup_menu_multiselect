@@ -27,7 +27,8 @@ class G2xPopupMenuMultiSelect extends StatefulWidget {
   final Widget child;
   final String? selectAll;
   final double? maxHeight;
-  final Color? checkboxColor;
+  final Color? checkColor;
+  final Color? activeColor;
   const G2xPopupMenuMultiSelect({
     Key? key,
     required this.children,
@@ -35,7 +36,8 @@ class G2xPopupMenuMultiSelect extends StatefulWidget {
     required this.child,
     this.selectAll,
     this.maxHeight,
-    this.checkboxColor,
+    this.checkColor,
+    this.activeColor
   }) : super(key: key);
 
   @override
@@ -65,6 +67,8 @@ class _G2xPopupMenuMultiSelectState extends State<G2xPopupMenuMultiSelect> {
               onSelected: widget.onSelected,
               selectAll: widget.selectAll,
               maxHeight: widget.maxHeight,
+              checkColor: widget.checkColor,
+              activeColor: widget.activeColor,
             ),
           ),
         );
@@ -81,7 +85,8 @@ class _G2xPopupMenuMultiSelectContainer extends StatefulWidget {
   final Size parentSize;
   final String? selectAll;
   final double? maxHeight;
-  final Color? checkboxColor;
+  final Color? checkColor;
+  final Color? activeColor;
   const _G2xPopupMenuMultiSelectContainer({
     Key? key,
     required this.children,
@@ -90,7 +95,8 @@ class _G2xPopupMenuMultiSelectContainer extends StatefulWidget {
     required this.parentSize,
     this.selectAll,
     this.maxHeight,
-    this.checkboxColor
+    this.checkColor,
+    this.activeColor
   }) : super(key: key);
 
   @override
@@ -213,7 +219,8 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                                       height: 30,
                                       width: 30,
                                       child: Checkbox(
-                                        checkColor: widget.checkboxColor ?? Theme.of(context).primaryColor,
+                                        activeColor: widget.activeColor ?? Theme.of(context).primaryColor,
+                                        checkColor: widget.checkColor ?? Colors.white,
                                         value: newList[index].selected,
                                         onChanged: (_){
                                           update(index);
