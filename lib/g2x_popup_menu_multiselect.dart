@@ -27,13 +27,15 @@ class G2xPopupMenuMultiSelect extends StatefulWidget {
   final Widget child;
   final String? selectAll;
   final double? maxHeight;
+  final Color? checkboxColor;
   const G2xPopupMenuMultiSelect({
     Key? key,
     required this.children,
     required this.onSelected,
     required this.child,
     this.selectAll,
-    this.maxHeight
+    this.maxHeight,
+    this.checkboxColor,
   }) : super(key: key);
 
   @override
@@ -79,6 +81,7 @@ class _G2xPopupMenuMultiSelectContainer extends StatefulWidget {
   final Size parentSize;
   final String? selectAll;
   final double? maxHeight;
+  final Color? checkboxColor;
   const _G2xPopupMenuMultiSelectContainer({
     Key? key,
     required this.children,
@@ -86,7 +89,8 @@ class _G2xPopupMenuMultiSelectContainer extends StatefulWidget {
     required this.parentOffset,
     required this.parentSize,
     this.selectAll,
-    this.maxHeight
+    this.maxHeight,
+    this.checkboxColor
   }) : super(key: key);
 
   @override
@@ -209,6 +213,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                                       height: 30,
                                       width: 30,
                                       child: Checkbox(
+                                        checkColor: widget.checkboxColor ?? Theme.of(context).primaryColor,
                                         value: newList[index].selected,
                                         onChanged: (_){
                                           update(index);
