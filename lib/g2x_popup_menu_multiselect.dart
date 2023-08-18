@@ -194,7 +194,7 @@ class __G2xPopupMenuMultiSelectContainerState extends State<_G2xPopupMenuMultiSe
                     height: widget.maxHeight,
                     //width: MediaQuery.of(context).size.width,
                     child: Scrollbar(
-                      isAlwaysShown: widget.maxHeight != null,
+                      thumbVisibility: widget.maxHeight != null,
                       controller: scrollController,
                       child: SingleChildScrollView(
                         controller: scrollController,
